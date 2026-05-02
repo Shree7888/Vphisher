@@ -1,9 +1,19 @@
+"use client";
+
+import dynamic from "next/dynamic";
+
+const ClientOnly = dynamic(
+  () =>
+    Promise.resolve(() => {
+      return (
+        <div className="h-screen bg-black text-white flex items-center justify-center">
+          Working ✅ No Server Crash
+        </div>
+      );
+    }),
+  { ssr: false }
+);
 
 export default function Home() {
-  return (
-   
-   <>
-     <div className="h-screen bg-zinc-950 text-gray-900 font-extrabold text-center">Muhhaaaa....</div>
-   </>
-  );
+  return <ClientOnly />;
 }
